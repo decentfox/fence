@@ -76,6 +76,7 @@ def authorize(*args, **kwargs):
         params = {"redirect": redirect_url}
         login_url = config.get("DEFAULT_LOGIN_URL")
         idp = flask.request.args.get("idp")
+        print("idp", idp)
         if idp:
             if idp not in IDP_URL_MAP or idp not in config["OPENID_CONNECT"]:
                 raise UserError("idp {} is not supported".format(idp))
@@ -83,7 +84,9 @@ def authorize(*args, **kwargs):
             login_url = "{}/login/{}".format(config.get("BASE_URL"), idp_url)
             if idp == "shibboleth":
                 params["shib_idp"] = flask.request.args.get("shib_idp")
+                print('params["shib_idp"]', params["shib_idp"])
         login_url = add_params_to_uri(login_url, params)
+        print("login_url", login_url)
         return flask.redirect(login_url)
 
     try:
