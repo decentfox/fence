@@ -20,7 +20,7 @@ Fence is a core service of the Gen3 stack that has multiple capabilities:
 
 1. [API Documentation](#API-documentation)
 1. [Terminologies](#Terminologies)
-1. [Identity Providers](#identity-provider)
+1. [Identity Providers](#identity-providers)
 1. [OIDC & OAuth2](#oidc--oauth2)
 1. [Accessing Data](#accessing-data)
 1. [Setup](#setup)

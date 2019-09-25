@@ -31,7 +31,7 @@ The [Shibboleth dockerfile](../DockerfileShib) image is at https://quay.io/repos
 }
 ```
 
-### In the commons which is set up with Shibboleth login
+### In the Commons which is set up with Shibboleth login
 
 Register an OIDC client using [this `fence-create` command](https://github.com/uc-cdis/fence#register-internal-oauth-client), the redirect url should be `https://$COMMONS_DOMAIN/user/login/fence/login`.
 
@@ -62,12 +62,10 @@ ENABLED_IDENTITY_PROVIDERS:
 
 `qa-biologin` is under the Genomel AWS acccount.
 
-To use it, get the QA login.bionimbus IP and edit your local `/etc/hosts` to map this IP to `login.bionimbus.org`. Also edit `/etc/hosts` in the fence pod of the commons that will be logging in through the QA login.bionimbus (this can be automated in `fence-deploy.yaml`).
-<!-- ```
-        command: ["/bin/bash" ]
-        args:
-         - "-c"
-         - |
-           # QA login.bionimbus
-           echo "52.201.103.243 login.bionimbus.org" >> /etc/hosts
-``` -->
+To use it, get the QA login.bionimbus IP and edit your local `/etc/hosts` to map this IP to `login.bionimbus.org`. Also edit `/etc/hosts` in the fence pod of the Commons that will be logging in through the QA login.bionimbus (this can be automated in `fence-deploy.yaml`).
+
+## InCommon login
+
+login.bionimbus should have provider `shibboleth` in section `OPENID_CONNECT` of the fence config.
+
+In the Commons which is set up with InCommon login, the `authorize_url` should be `https://login.bionimbus.org/oauth2/authorize?idp=shibboleth&shib_idp={chosen_shib_idp}`.
