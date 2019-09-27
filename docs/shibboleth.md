@@ -10,7 +10,7 @@ user
 -> redirect to portal
 ```
 
-Fence checks the request parameter `shib_idp` to know which identity provider to use (by default, NIH is used). All valid identifiers for `shib_idp` are listed at https://login.bionimbus.org/Shibboleth.sso/DiscoFeed. Supported IDPs:
+Fence checks the request parameter `ipd` and if it's equal to `shibboleth`, it then checks the request parameter `shib_idp` to know which identity provider to use (by default, NIH is used). All valid identifiers for `shib_idp` are listed at https://login.bionimbus.org/Shibboleth.sso/DiscoFeed. Supported IDPs:
 - NIH iTrust (`shib_idp=urn:mace:incommon:nih.gov`. Default)
 - InCommon (`shib_idp=urn:mace:incommon:uchicago.edu`)
 - eduGAIN
