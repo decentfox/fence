@@ -38,7 +38,9 @@ class FenceRedirect(Resource):
         if idp == "shibboleth":
             shib_idp = flask.request.args.get("shib_idp")
             if shib_idp:
-                add_params_to_uri(authorization_url, {"idp": idp, "shib_idp": shib_idp})
+                authorization_url = add_params_to_uri(
+                    authorization_url, {"idp": idp, "shib_idp": shib_idp}
+                )
 
         flask.session["state"] = state
         return flask.redirect(authorization_url)
