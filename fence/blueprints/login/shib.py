@@ -63,7 +63,7 @@ class ShibbolethLoginFinish(Resource):
 
         print("************************************")
         print("************************************")
-        print('shib_header', shib_header)
+        print("shib_header", shib_header)
         print("flask.request.headers", flask.request.headers)
         print("************************************")
         print("************************************")

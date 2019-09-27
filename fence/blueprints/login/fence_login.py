@@ -30,6 +30,16 @@ class FenceRedirect(Resource):
         authorization_url, state = flask.current_app.fence_client.generate_authorize_redirect(
             oauth2_redirect_uri
         )
+        print("authorization_url", authorization_url)
+        print("flask.request.args", flask.request.args)
+
+        idp = flask.request.args.get("idp")
+        if idp == "shibboleth":
+            shib_idp = flask.request.args.get("shib_idp")
+            if "shib_idp" in flask.request.args:
+                authorization_url += "&idp={}&shib_idp={}".format(idp, shib_idp)
+        print("authorization_url", authorization_url)
+
         flask.session["state"] = state
         return flask.redirect(authorization_url)
 
